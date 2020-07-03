@@ -16,9 +16,8 @@ public class PlayerMovementState : PlayerBaseState
 
 
         if (player.checkDeadZone()) {
-            player.targetDir = new Vector3(player.joystick.Horizontal, 0, player.joystick.Vertical);
+            player.targetDir = new Vector3(player.joystick.Horizontal, 0 , player.joystick.Vertical);
             Debug.DrawRay(player.transform.position, player.targetDir, Color.red, 0.2f);
-            //if (player.CharacterController == null) {
             player.Movement(player.targetDir, playerMovementData.maxSpeed, player.accelerationModule);
             player.Rotation();
 

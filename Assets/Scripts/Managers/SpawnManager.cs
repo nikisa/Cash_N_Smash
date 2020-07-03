@@ -44,20 +44,8 @@ public class SpawnManager : MonoBehaviourPunCallbacks
     }
 
     public override void OnJoinedRoom() {
-        if (PhotonNetwork.IsConnectedAndReady) {
-            //object characterSelectionNumber;
-            //if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue(MultiplayerCharacterSelector.CHARACTER_SELECTED_NUMBER , out characterSelectionNumber)) {
-            //    Debug.Log("Character selection number: "  + (int) characterSelectionNumber);
-
-            //    //TO DO: intantiatePosition anchored to the dollar
-            //    Vector3 instantiatePosition = Vector3.zero;
-
-            //    PhotonNetwork.Instantiate(charactersPrefabs[(int) characterSelectionNumber].name , instantiatePosition , Quaternion.identity);
-
-            //}
+        if (PhotonNetwork.IsConnectedAndReady)
             SpawnPlayer();
-        }
-
     }
 
     #endregion
@@ -68,7 +56,6 @@ public class SpawnManager : MonoBehaviourPunCallbacks
         if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue(MultiplayerCharacterSelector.CHARACTER_SELECTED_NUMBER, out characterSelectionNumber)) {
             Debug.Log("Character selection number: " + (int)characterSelectionNumber);
 
-            //TO DO: intantiatePosition anchored to the dollar
             Vector3 instantiatePosition = Vector3.zero;
 
             GameObject playerReference = Instantiate(charactersPrefabs[(int)characterSelectionNumber], instantiatePosition, Quaternion.identity);
@@ -88,7 +75,6 @@ public class SpawnManager : MonoBehaviourPunCallbacks
                 };
 
                 PhotonNetwork.RaiseEvent((byte)RaiseEventCodes.PlayerSpawnEventCode , data , raiseEventOptions , sendOptions);
-
 
             }
             else {

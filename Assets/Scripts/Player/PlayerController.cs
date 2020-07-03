@@ -6,7 +6,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    
+    //Character ID
+    public enum CharacterID
+    {
+        GeorgeWashington,
+        AbrahamLincoln
+    };
+
     //Inspector
+    [Header("CharacterID")]
+    public CharacterID characterID;
     [Header("Player values")]
     public float rotationSpeed;
     [Header("Animator reference")]

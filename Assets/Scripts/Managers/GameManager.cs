@@ -18,17 +18,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     //Private
     private float secondsDeactivation = 1.5f;
 
-    // Start is called before the first frame update
     void Start()
     {
         informPanelReference.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     #region UI Callbacks
     public void JoinRandomRoom() {

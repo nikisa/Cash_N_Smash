@@ -486,7 +486,7 @@ PrefabInstance:
     - target: {fileID: 5128689993228932866, guid: c93aed18b36a5774895f7bd250b492f6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5128689993228932866, guid: c93aed18b36a5774895f7bd250b492f6,
         type: 3}
@@ -501,7 +501,7 @@ PrefabInstance:
     - target: {fileID: 5128689993228932866, guid: c93aed18b36a5774895f7bd250b492f6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5128689993228932866, guid: c93aed18b36a5774895f7bd250b492f6,
         type: 3}
@@ -511,7 +511,7 @@ PrefabInstance:
     - target: {fileID: 5128689993228932866, guid: c93aed18b36a5774895f7bd250b492f6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 5128689993228932866, guid: c93aed18b36a5774895f7bd250b492f6,
         type: 3}
@@ -542,6 +542,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: George Washington
+      objectReference: {fileID: 0}
+    - target: {fileID: 5128689993229093666, guid: c93aed18b36a5774895f7bd250b492f6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5927541130341391838, guid: c93aed18b36a5774895f7bd250b492f6,
         type: 3}

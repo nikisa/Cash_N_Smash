@@ -17,8 +17,8 @@ public class PlayerMultiplayerSetup : MonoBehaviourPun
             transform.GetComponent<PlayerController>().joystick.gameObject.SetActive(true);
         }
         else {
-            //transform.GetComponent<PlayerController>().enabled = false;
-            //transform.GetComponent<PlayerController>().joystick.gameObject.SetActive(false);
+            transform.GetComponent<PlayerController>().enabled = false;
+            transform.GetComponent<PlayerController>().joystick.gameObject.SetActive(false);
         }
         SetPlayerName();
     }

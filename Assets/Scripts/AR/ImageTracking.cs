@@ -8,8 +8,13 @@ using UnityEngine.XR.ARFoundation;
 [RequireComponent(typeof(ARTrackedImageManager))]
 public class ImageTracking : MonoBehaviour
 {
+
+    //Inspector
+    public CharacterSelection characterSelection;
     [SerializeField]
     private GameObject[] placeablePrefabs;
+
+    //Private
     private Dictionary<string, GameObject> spawnedPrefabs = new Dictionary<string, GameObject>();
     private ARTrackedImageManager trackedImageManager;
 
@@ -18,7 +23,7 @@ public class ImageTracking : MonoBehaviour
         trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
 
         foreach (GameObject prefab in placeablePrefabs) {
-            GameObject newPrefab = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+            GameObject newPrefab = Instantiate(prefab, Vector3.zero, prefab.transform.rotation);
             newPrefab.name = prefab.name;
             spawnedPrefabs.Add(prefab.name, newPrefab);
         }
@@ -54,6 +59,10 @@ public class ImageTracking : MonoBehaviour
         GameObject prefab = spawnedPrefabs[name];
         prefab.transform.position = position;
         prefab.SetActive(true);
+        characterSelection.selectedCharacter = (int)prefab.GetComponent<PlayerController>().characterID;
+        characterSelection.uiReset.SetActive(true);
+        characterSelection.uiFight.SetActive(true);
+        characterSelection.actualCharacter = prefab;
 
         foreach (GameObject go in spawnedPrefabs.Values) {
             if (go.name != name) {
