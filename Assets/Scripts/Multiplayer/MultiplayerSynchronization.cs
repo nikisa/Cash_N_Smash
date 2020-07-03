@@ -20,11 +20,12 @@ public class MultiplayerSynchronization : MonoBehaviour , IPunObservable
     Quaternion networkedRotation;
     float distance;
     float angle;
+    GameObject arenaReference;
 
     private void Awake() {
         ch = GetComponent<CharacterController>();
         photonView = GetComponent<PhotonView>();
-
+        arenaReference = GameObject.Find("Arena");
         networkedPosition = Vector3.zero;
         networkedRotation = Quaternion.identity;
 
@@ -42,7 +43,7 @@ public class MultiplayerSynchronization : MonoBehaviour , IPunObservable
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
         if (stream.IsWriting) {
             //My controller --> Send data and info to other players
-            stream.SendNext(ch.transform.position);
+            stream.SendNext(ch.transform.position - arenaReference.transform.position);
             stream.SendNext(ch.transform.rotation);
 
             //TODO: (??PROBABLY??) stream also the animations connecvted to the player animator controller?
@@ -60,7 +61,7 @@ public class MultiplayerSynchronization : MonoBehaviour , IPunObservable
         else{
             //Gets the update of the position and rotations
             
-            networkedPosition = (Vector3)stream.ReceiveNext();
+            networkedPosition = (Vector3)stream.ReceiveNext() + arenaReference.transform.position;
             networkedRotation = (Quaternion)stream.ReceiveNext();
 
 

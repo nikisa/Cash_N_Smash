@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject informPanelReference;
     public TextMeshProUGUI uiInformReference;
     public GameObject searchGameButtonReference;
+    public GameObject adjustButton;
+    public GameObject raycastCenterReference;
 
     //Private
     private float secondsDeactivation = 1.5f;
@@ -20,7 +22,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     void Start()
     {
         informPanelReference.SetActive(true);
-        uiInformReference.text = "Searching for a game to join";
     }
 
     // Update is called once per frame
@@ -48,6 +49,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     public override void OnJoinedRoom() {
+
+        adjustButton.SetActive(false);
+        raycastCenterReference.SetActive(false);
 
         if (PhotonNetwork.CurrentRoom.PlayerCount == 1) {
             uiInformReference.text = PhotonNetwork.CurrentRoom.Name + " joined! Waiting for more players.";
