@@ -14,7 +14,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public GameObject loginReference;
     [Header("Lobby")]
     public GameObject lobbyReference;
-    public GameObject uiGraphicsReference;
+    //public GameObject uiGraphicsReference;
     [Header("Connection Status")]
     public bool isConnectionReady = false;
     public GameObject connectionStatusReference;
@@ -39,28 +39,24 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     #region UI_Management
     private void LoginUIManagement() {
         lobbyReference.SetActive(false);
-        uiGraphicsReference.SetActive(false);
         connectionStatusReference.SetActive(false);
         loginReference.SetActive(true);
     }
 
     private void LoggedUIManagement() {
         lobbyReference.SetActive(true);
-        uiGraphicsReference.SetActive(true);
         connectionStatusReference.SetActive(false);
         loginReference.SetActive(true);
     }
 
     private void ConnectionUIManagement() {
         lobbyReference.SetActive(false);
-        uiGraphicsReference.SetActive(false);
         loginReference.SetActive(false);
         connectionStatusReference.SetActive(true);
     }
 
     private void ConnectedToMasterUIManagement() {
         lobbyReference.SetActive(true);
-        uiGraphicsReference.SetActive(true);
         loginReference.SetActive(false);
         connectionStatusReference.SetActive(false);
     }
@@ -88,7 +84,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
 
     public void OnQuickMatchButtonClicked() {
-        SceneLoader.Instance.LoadScene("Scene_PlayerSelection");
+        SceneLoader.Instance.LoadScene("CharacterSelection");
     }
 
     #endregion

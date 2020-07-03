@@ -23,7 +23,7 @@ MonoBehaviour:
       m_GuidHigh: 6982574548598804232
     m_Size: {x: 0.23431085, y: 0.1}
     m_SpecifySize: 1
-    m_Name: front
+    m_Name: George Washington
     m_Texture: {fileID: 2800000, guid: 1db87c746d7c7b44084fea828e16e760, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 5145817819478825793
@@ -33,5 +33,5 @@ MonoBehaviour:
       m_GuidHigh: 16084499971956859146
     m_Size: {x: 0.23422563, y: 0.1}
     m_SpecifySize: 1
-    m_Name: back
+    m_Name: Abraham Lincoln
     m_Texture: {fileID: 2800000, guid: d1e836f2a6efbbf40ae14452819f37df, type: 3}

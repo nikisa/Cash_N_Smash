@@ -24,7 +24,9 @@ public class PlayerMultiplayerSetup : MonoBehaviourPun
     }
 
     void SetPlayerName() {
-        playerNameText.text = photonView.Owner.NickName;
+        if (photonView.Owner != null) {
+            playerNameText.text = photonView.Owner.NickName;
+        }
 
         if (photonView.IsMine) {
             playerNameText.color = Color.blue;

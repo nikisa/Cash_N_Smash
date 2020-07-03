@@ -16,7 +16,7 @@ public class SceneLoader : Singleton<SceneLoader>
     }
 
     IEnumerator InitializeSceneLoading() {
-        yield return SceneManager.LoadSceneAsync("Scene_Loading");
+        yield return SceneManager.LoadSceneAsync("Loading");
         StartCoroutine(LoadActualScene());
     }
 

@@ -346,8 +346,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeablePrefabs:
-  - {fileID: 8651711005836389737, guid: ea18cdecac426e742b26d015c3ecc81e, type: 3}
-  - {fileID: 7093258659066822317, guid: d0c4f2546811eea4681d56aa1f4afee1, type: 3}
+  - {fileID: 5128689993229093666, guid: c93aed18b36a5774895f7bd250b492f6, type: 3}
+  - {fileID: 1271051237347407533, guid: 037a2b12f51af5049a5002352bdae136, type: 3}
 --- !u!1 &1577749883
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +540,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sphere
       objectReference: {fileID: 0}
+    - target: {fileID: 7093258659066822317, guid: d0c4f2546811eea4681d56aa1f4afee1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0c4f2546811eea4681d56aa1f4afee1, type: 3}
 --- !u!1001 &7789183712438884487
@@ -608,6 +613,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 8651711005836389737, guid: ea18cdecac426e742b26d015c3ecc81e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea18cdecac426e742b26d015c3ecc81e, type: 3}

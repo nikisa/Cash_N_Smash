@@ -29,11 +29,11 @@ public class CharacterSelection : MonoBehaviour
     }
 
     public void OnBattleButtonClicked() {
-        SceneLoader.Instance.LoadScene("Scene_Gameplay");
+        SceneLoader.Instance.LoadScene("Gameplay");
     }
 
     public void OnBackButtonClicked() {
-        SceneLoader.Instance.LoadScene("Scene_Lobby");
+        SceneLoader.Instance.LoadScene("Lobby");
     }
 
     public void OnSelectButtonClicked() {
