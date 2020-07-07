@@ -14,7 +14,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public GameObject loginReference;
     [Header("Lobby")]
     public GameObject lobbyReference;
-    //public GameObject uiGraphicsReference;
     [Header("Connection Status")]
     public bool isConnectionReady = false;
     public GameObject connectionStatusReference;

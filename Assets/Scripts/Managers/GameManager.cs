@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         raycastCenterReference.SetActive(false);
 
         if (PhotonNetwork.CurrentRoom.PlayerCount == 1) {
-            uiInformReference.text = PhotonNetwork.CurrentRoom.Name + " joined! Waiting for more players.";
+            uiInformReference.text = PhotonNetwork.CurrentRoom.Name + " joined! Waiting for players.";
         }
         else {
             uiInformReference.text = PhotonNetwork.CurrentRoom.Name + " joined!";
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         string randomRoomName = "Room" + Random.Range(0,1000);
         RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 4;
+        roomOptions.MaxPlayers = 3;
 
         PhotonNetwork.CreateRoom(randomRoomName , roomOptions);
     }

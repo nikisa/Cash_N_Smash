@@ -24,7 +24,7 @@ public class CharacterSelection : MonoBehaviour
     public int selectedCharacter { get => _selectedCharacter; set => _selectedCharacter = value; }
 
     private void Start() {
-        selectedCharacter = -1;
+        selectedCharacter = 0;
         uiReset.SetActive(false);
         uiFight.SetActive(false);
     }
