@@ -15,10 +15,13 @@ public class PlayerMultiplayerSetup : MonoBehaviourPun
         if (photonView.IsMine) {
             transform.GetComponent<PlayerController>().enabled = true;
             transform.GetComponent<PlayerController>().joystick.gameObject.SetActive(true);
+            transform.GetComponent<PlayerController>().attackButton.gameObject.SetActive(true);
         }
         else {
             transform.GetComponent<PlayerController>().enabled = false;
             transform.GetComponent<PlayerController>().joystick.gameObject.SetActive(false);
+            transform.GetComponent<PlayerController>().attackButton.gameObject.SetActive(false);
+
         }
         SetPlayerName();
     }

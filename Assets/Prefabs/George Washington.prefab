@@ -111,7 +111,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -580,6 +580,7 @@ MonoBehaviour:
   rotationSpeed: 1080
   animator: {fileID: 5128689993221839766}
   joystick: {fileID: 8037253041643393767}
+  attackButton: {fileID: 646900016}
   MovementDeadZoneValue: 0.75
   targetDir: {x: 0, y: 0, z: 0}
   playerMovementData: {fileID: 0}

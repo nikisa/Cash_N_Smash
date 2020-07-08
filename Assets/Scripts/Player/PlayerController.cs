@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     [Header("Joystick references")]
     public Joystick joystick;
+    public GameObject attackButton;
     [Header("Joystick Dead Zone")]
     [Range(0, 1)]
     public float MovementDeadZoneValue;
