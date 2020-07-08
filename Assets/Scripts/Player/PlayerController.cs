@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     [Header("Joystick references")]
     public Joystick joystick;
-    public JoyButton joybutton;
     [Header("Joystick Dead Zone")]
     [Range(0, 1)]
     public float MovementDeadZoneValue;
@@ -109,5 +108,7 @@ public class PlayerController : MonoBehaviour
     public void Attack() {
         animator.SetTrigger(ATTACK);
     }
+
+    
 
 }

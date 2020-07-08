@@ -15,7 +15,7 @@ public class MultiplayerSynchronization : MonoBehaviour , IPunObservable
 
     //Private
     PhotonView photonView;
-    CharacterController ch;
+    PlayerController player;
     Vector3 networkedPosition;
     Quaternion networkedRotation;
     float distance;
@@ -23,7 +23,7 @@ public class MultiplayerSynchronization : MonoBehaviour , IPunObservable
     GameObject arenaReference;
 
     private void Awake() {
-        ch = GetComponent<CharacterController>();
+        player = GetComponent<PlayerController>();
         photonView = GetComponent<PhotonView>();
         arenaReference = GameObject.Find("Arena");
         networkedPosition = Vector3.zero;
@@ -35,25 +35,23 @@ public class MultiplayerSynchronization : MonoBehaviour , IPunObservable
     private void FixedUpdate() {
 
         if (!photonView.IsMine) {
-            ch.transform.position = Vector3.MoveTowards(ch.transform.position , networkedPosition , distance*(1/PhotonNetwork.SerializationRate));
-            ch.transform.rotation = Quaternion.RotateTowards(ch.transform.rotation, networkedRotation, angle*(1/PhotonNetwork.SerializationRate)); 
+            player.transform.position = Vector3.MoveTowards(player.transform.position , networkedPosition , distance*(1/PhotonNetwork.SerializationRate));
+            player.transform.rotation = Quaternion.RotateTowards(player.transform.rotation, networkedRotation, angle*(1/PhotonNetwork.SerializationRate)); 
         }
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
         if (stream.IsWriting) {
             //My controller --> Send data and info to other players
-            stream.SendNext(ch.transform.position - arenaReference.transform.position);
-            stream.SendNext(ch.transform.rotation);
-
-            //TODO: (??PROBABLY??) stream also the animations connecvted to the player animator controller?
+            stream.SendNext(player.transform.position - arenaReference.transform.position);
+            stream.SendNext(player.transform.rotation);
 
             if (synchronizedVelocity) {
-                stream.SendNext(ch.attachedRigidbody.velocity);
+                stream.SendNext(player.velocityVector);
             }
 
             if (synchronizedAngularVelocity) {
-                stream.SendNext(ch.attachedRigidbody.angularVelocity);
+                stream.SendNext(player.transform.rotation);
             }
 
 
@@ -66,8 +64,8 @@ public class MultiplayerSynchronization : MonoBehaviour , IPunObservable
 
 
             if (isTeleportEnabled) {
-                if (Vector3.Distance(ch.transform.position , networkedPosition) > teleportConstraintValue) {
-                    ch.transform.position = networkedPosition;
+                if (Vector3.Distance(player.transform.position , networkedPosition) > teleportConstraintValue) {
+                    player.transform.position = networkedPosition;
                 }
             }
 
@@ -76,15 +74,16 @@ public class MultiplayerSynchronization : MonoBehaviour , IPunObservable
                 float lag = Mathf.Abs((float)(PhotonNetwork.Time - info.SentServerTime));
 
                 if (synchronizedVelocity) {
-                    ch.attachedRigidbody.velocity = (Vector3)stream.ReceiveNext();
-                    networkedPosition += ch.attachedRigidbody.velocity * lag;
-                    distance = Vector3.Distance(ch.transform.position, networkedPosition);
+                    player.velocityVector = (Vector3)stream.ReceiveNext();
+                    networkedPosition += player.velocityVector * lag;
+                    distance = Vector3.Distance(player.transform.position, networkedPosition);
                 }
 
                 if (synchronizedAngularVelocity) {
-                    ch.attachedRigidbody.angularVelocity = (Vector3)stream.ReceiveNext();
-                    networkedRotation = Quaternion.Euler(ch.attachedRigidbody.angularVelocity * lag) * networkedRotation ;
-                    angle = Quaternion.Angle(ch.transform.rotation , networkedRotation);
+                    player.transform.rotation = (Quaternion)stream.ReceiveNext();
+                    //player.attachedRigidbody.angularVelocity = (Vector3)stream.ReceiveNext();
+                    //networkedRotation = Quaternion.Euler(player.attachedRigidbody.angularVelocity * lag) * networkedRotation;
+                    angle = Quaternion.Angle(player.transform.rotation , networkedRotation);
                 }
 
             }

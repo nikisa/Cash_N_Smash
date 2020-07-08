@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviourPunCallbacks
 
     //Inspector
     public GameObject[] charactersPrefabs;
-    public Transform[] spawnPoint;
+    public Transform[] spawnPoints;
     public GameObject arenaReference;
 
     public enum RaiseEventCodes
@@ -37,6 +37,7 @@ public class SpawnManager : MonoBehaviourPunCallbacks
             int receivedPlayerSelectionData = (int)data[3];
 
             GameObject player = Instantiate(charactersPrefabs[receivedPlayerSelectionData],receivedPosition + arenaReference.transform.position , receivedRotation);
+            player.SetActive(true);
             PhotonView photonView = player.GetComponent<PhotonView>();
             photonView.ViewID = (int)data[2];
         }
@@ -56,9 +57,10 @@ public class SpawnManager : MonoBehaviourPunCallbacks
         if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue(MultiplayerCharacterSelector.CHARACTER_SELECTED_NUMBER, out characterSelectionNumber)) {
             Debug.Log("Character selection number: " + (int)characterSelectionNumber);
 
-            Vector3 instantiatePosition = Vector3.zero;
-
+            int actualSpawnPoint = PhotonNetwork.CountOfPlayers;
+            Vector3 instantiatePosition = spawnPoints[actualSpawnPoint].position;
             GameObject playerReference = Instantiate(charactersPrefabs[(int)characterSelectionNumber], instantiatePosition, Quaternion.identity);
+            playerReference.SetActive(true);
             PhotonView photonView = playerReference.GetComponent<PhotonView>();
 
             if (PhotonNetwork.AllocateViewID(photonView)) {
