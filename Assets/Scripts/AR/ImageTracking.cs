@@ -62,6 +62,7 @@ public class ImageTracking : MonoBehaviour
         characterSelection.selectedCharacter = (int) prefab.GetComponent<PlayerController>().characterID;
         characterSelection.uiReset.SetActive(true);
         characterSelection.uiFight.SetActive(true);
+        characterSelection.uiInfo.SetActive(false);
         characterSelection.actualCharacter = prefab;
 
         foreach (GameObject go in spawnedPrefabs.Values) {

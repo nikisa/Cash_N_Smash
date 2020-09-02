@@ -65,6 +65,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     
     }
 
+    public override void OnLeftRoom() {
+        SceneLoader.Instance.LoadScene("Lobby");
+    }
+
     #endregion
 
     void CreateAndJoinRoom() {
@@ -75,6 +79,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         PhotonNetwork.CreateRoom(randomRoomName , roomOptions);
     }
+
+
 
     IEnumerator DeactivatedAfterSeconds(GameObject _gameObject , float _seconds) {
         yield return new WaitForSeconds(_seconds);

@@ -9,21 +9,23 @@ public class PlayerMovementState : PlayerBaseState
     public PlayerMovementData playerMovementData;
 
     public override void Enter() {
-        player.accelerationModule = playerMovementData.maxSpeed / playerMovementData.AccelerationTime;
+        //player.accelerationModule = playerMovementData.maxSpeed / playerMovementData.AccelerationTime;
     }
 
     public override void Tick() {
 
+        //if (!player.checkDeadZone())
+        //    animator.SetTrigger(IDLE);
 
-        if (player.checkDeadZone()) {
-            player.targetDir = new Vector3(player.joystick.Horizontal, 0 , player.joystick.Vertical);
-            Debug.DrawRay(player.transform.position, player.targetDir, Color.red, 0.2f);
-            player.Movement(player.targetDir, playerMovementData.maxSpeed, player.accelerationModule);
-            player.Rotation();
+        //if (player.checkDeadZone()) {
+        //    player.targetDir = new Vector3(player.joystick.Horizontal, 0 , player.joystick.Vertical);
+        //    Debug.DrawRay(player.transform.position, player.targetDir, Color.red, 0.2f);
+        //    player.Movement(player.targetDir, playerMovementData.maxSpeed, player.accelerationModule);
+        //    player.Rotation();
 
-        }
-        else {
-            animator.SetTrigger(MOVEMENT_DECELERATION);
-        }
+        //}
+        //else {
+        //    animator.SetTrigger(MOVEMENT_DECELERATION);
+        //}
     }
 }

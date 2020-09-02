@@ -482,6 +482,8 @@ MonoBehaviour:
   uiReset: {fileID: 865961810}
   uiLobby: {fileID: 961851878}
   uiFight: {fileID: 220686356}
+  uiInfo: {fileID: 51162595}
+  actualCharacter: {fileID: 0}
 --- !u!4 &281580109
 Transform:
   m_ObjectHideFlags: 0

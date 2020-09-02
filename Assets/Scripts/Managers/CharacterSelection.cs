@@ -12,6 +12,7 @@ public class CharacterSelection : MonoBehaviour
     public GameObject uiReset;
     public GameObject uiLobby;
     public GameObject uiFight;
+    public GameObject uiInfo;
 
     //Public
     [HideInInspector]
@@ -32,6 +33,7 @@ public class CharacterSelection : MonoBehaviour
     public void OnReSelectButtonClicked() {
         uiReset.SetActive(false);
         uiFight.SetActive(false);
+        uiInfo.SetActive(true);
         Destroy(actualCharacter);
     }
 

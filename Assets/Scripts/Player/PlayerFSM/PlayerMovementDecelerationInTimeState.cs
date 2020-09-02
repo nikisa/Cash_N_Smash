@@ -14,27 +14,27 @@ public class PlayerMovementDecelerationInTimeState : PlayerBaseState
     float finalDeltaTime;
 
     public override void Enter() {
-        playerMovementData = player.playerMovementData;
-        player.decelerationModule = (playerMovementData.maxSpeed) / (playerDecelInTimeData.DecelerationTime);
-        setMovementDecelerationCurve();
-        iterations = 1;
-        timer = 0;
+        //playerMovementData = player.playerMovementData;
+        //player.decelerationModule = (playerMovementData.maxSpeed) / (playerDecelInTimeData.DecelerationTime);
+        //setMovementDecelerationCurve();
+        //iterations = 1;
+        //timer = 0;
     }
 
     public override void Tick() {
-        timer += Time.deltaTime;
+        //timer += Time.deltaTime;
 
-        if (player.checkDeadZone()) {
-            animator.SetTrigger(MOVEMENT);
-        }
+        //if (player.checkDeadZone()) {
+        //    animator.SetTrigger(MOVEMENT);
+        //}
 
-        if (timer <= finalDeltaTime) {
-            player.Deceleration(playerDecelInTimeData.MovementDecelerationCurve, timer - Time.deltaTime, timer, iterations);
-        }
-        else {
-            player.Deceleration(playerDecelInTimeData.MovementDecelerationCurve, timer - Time.deltaTime, finalDeltaTime, iterations);
-            animator.SetTrigger(IDLE);
-        }
+        //if (timer <= finalDeltaTime) {
+        //    player.Deceleration(playerDecelInTimeData.MovementDecelerationCurve, timer - Time.deltaTime, timer, iterations);
+        //}
+        //else {
+        //    player.Deceleration(playerDecelInTimeData.MovementDecelerationCurve, timer - Time.deltaTime, finalDeltaTime, iterations);
+        //    animator.SetTrigger(IDLE);
+        //}
     }
 
     void setMovementDecelerationCurve() {
